@@ -1,0 +1,18 @@
+{% extends 'index.html' %}
+{% block la %}
+
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span4">
+		</div>
+		<div class="span4">
+		<form action="/dete1/" method="POST">
+		{%csrf_token%}
+			<img src="/static/img/test3.jpg" width='300px' height='300px'/>
+		</form>
+		</div>
+		<div class="span4">
+		</div>
+	</div>
+</div>
+{% endblock %}

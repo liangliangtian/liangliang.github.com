@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+{% block la %}
+
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span4">
+		</div>
+		<div class="span4">
+		<form action="/dete1/" method="POST">
+		{%csrf_token%}
+			<img src="/{{files.file}}" width='300px' height='300px'/>
+			 <button class="btn btn-large btn-info btn-block" type="submit">检测</button>
+		
+		</form>
+		</div>
+		<div class="span4">
+		</div>
+	</div>
+</div>
+{% endblock %}

@@ -1,22 +1,11 @@
 #coding=utf-8
 #
-#First, Load necessary libs and set up caffe and caffe_root„ÄÅ
-#
+#First, Load necessary libs and set up caffe and caffe_root„Ä?#
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 from google.protobuf import text_format
 from caffe.proto import caffe_pb2
-
-
-
-# Make sure that caffe is on the python path:
-caffe_root = '/home/liang/caffe/'  # this file is expected to be in {caffe_root}/examples
-import os
-os.chdir(caffe_root)
-import sys
-sys.path.insert(0, 'python')
-
 import caffe
 caffe.set_device(0)
 caffe.set_mode_gpu()
@@ -25,8 +14,8 @@ def runjpg1(a):
     plt.rcParams['figure.figsize'] = (10, 10)
     plt.rcParams['image.interpolation'] = 'nearest'
     plt.rcParams['image.cmap'] = 'gray'
-    model_def = '/home/liang/caffe/models/VGGNet/VOC0712/10276_hasMosaic_SSD_500x500/deploy.prototxt'
-    model_weights = '/home/liang/caffe/models/VGGNet/VOC0712/10276_hasMosaic_SSD_500x500/VGG_VOC0712_SSD_500x500_iter_39847.caffemodel'
+    model_def = '/home/liang/caffe/ssd_models/experiment/FSSD_512x512/resbody_deconv/deploy.prototxt'
+    model_weights = '/home/liang/caffe/ssd_models/experiment/FSSD_512x512/resbody_deconv/VGG_VOC0712_FSSD_512x512_iter_120000.caffemodel'
 
     net = caffe.Net(model_def,      # defines the structure of the model
                     model_weights,  # contains the trained weights
@@ -40,7 +29,7 @@ def runjpg1(a):
     transformer.set_channel_swap('data', (2,1,0))  # the reference model has channels in BGR order instead of RGB
 
     # load PASCAL VOC labels
-    labelmap_file = '/home/liang/caffe/data/10276_hasMosaic_indoor/labelmap_indoor.prototxt'
+    labelmap_file = '/home/liang/caffe/data/VOC18512/labelmap_voc.prototxt'
     file = open(labelmap_file, 'r')
     labelmap = caffe_pb2.LabelMap()
     text_format.Merge(str(file.read()), labelmap)
@@ -66,7 +55,7 @@ def runjpg1(a):
     #
 
     # set net to batch size of 1
-    image_resize = 500
+    image_resize = 512
     net.blobs['data'].reshape(1,3,image_resize,image_resize)
 
     image = caffe.io.load_image(a)
@@ -123,7 +112,6 @@ def runjpg1(a):
         color = colors[label]
         currentAxis.add_patch(plt.Rectangle(*coords, fill=False, edgecolor=color, linewidth=2))
         currentAxis.text(xmin, ymin, display_txt, bbox={'facecolor':color, 'alpha':0.5})
-
-    plt.show()
     plt.savefig("/home/liang/myPro/liangPro/index/static/img/test3.jpg")
+    plt.close()
     return

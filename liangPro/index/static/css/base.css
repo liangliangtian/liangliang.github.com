@@ -18,7 +18,7 @@ a:hover {text-transform:uppercase;font-size: 20px;}
 }
 .content{
     margin:0px 0px !important;
-    height: 800px;
+    height: 1000px;
 
     width :auto;
 
@@ -26,7 +26,7 @@ a:hover {text-transform:uppercase;font-size: 20px;}
     overflow:hidden;
     border:0px solid;
     z-index: 1;
-    background:url(/static/img/banner.jpg)no-repeat;
+    background:url(/static/img/banner.jpg);
     background-size: cover;
     /*opacity:70;*/
     /*filter: alpha(opacity=70)*/

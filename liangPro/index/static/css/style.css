@@ -1,9 +1,15 @@
 body
 	{
-		background: #ffffff;
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
-    position: relative;
+    position: absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    height:1000px;
+    background: url('../img/bbb1.jpg');
+    z-index:1;
 	}
 
 .heading {
@@ -114,7 +120,8 @@ hr {
 
 /* home section */
 #home {
-  background: url('../img/bbb1.jpg')no-repeat;
+  background: url('../img/bbb1.jpg');
+  background-size: cover;
 
 }
 #home {
@@ -130,7 +137,7 @@ hr {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 560px;
+  height:1000px;
   text-align: center;
 }
 #home h1 {
@@ -308,10 +315,10 @@ footer .fa {
 
 /* copyright section */
 #copyright {
-  background: #343434;
+  background:#343434 !important;
   color: #ffffff;
   padding-top: 80px;
-  padding-bottom: 80px;
+  padding-bottom: 0px;
   text-align: center;
 }
 #copyright p {

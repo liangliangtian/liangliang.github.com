@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>基于SSD的苹果叶部病理图像目标检测和识别系统</title>
+    <title>Detection Apple leaf diseases</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -41,17 +41,16 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         {% block navbar %}
-        <li class="active"><a href="{% url 'index' %}">主页 <span class="sr-only">(current)</span></a></li>
-        <li><a href="#" data-toggle="modal" data-target="#myModal3">检测</a></li>
+        <li class="active"><a href="{% url 'index' %}">Index<span class="sr-only">(current)</span></a></li>
+        <li><a href="#" data-toggle="modal" data-target="#myModal3">Detection</a></li>
         {% endblock %}
       </ul>
-    　　
       <ul class="nav navbar-nav navbar-right">
       {% if not request.session.username %}
 
         <li><a href="#" data-toggle="modal" data-target="#myModal1"><div id="header-bottom-right">
-      <div id="rec">登录</div></div></a></li> 
-        <li><a href="#" data-toggle="modal" data-target="#myModal">注册</a></li>   
+      <div id="rec">Login</div></div></a></li> 
+        <li><a href="#" data-toggle="modal" data-target="#myModal">Register</a></li>   
 
       {% else %}
 
@@ -59,7 +58,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{request.session.username}}&nbsp;<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li role="separator" class="divider"></li>
-            <li><a href="{% url 'logout'%}">退出登录</a></li>
+            <li><a href="{% url 'logout'%}">Logout</a></li>
           </ul>
         </li>
       {% endif %}</ul>
@@ -97,8 +96,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-sm-12">
-                <h1><font style="font-size: 38px;font-weight: bold;">SSD BASED</font></h1><br>
-                <h2><font style="font-size: 24px;font-weight: bold;">苹果叶部病理图像目标检测和识别</font></h2>
+                <h1><font style="font-size: 38px;font-weight: bold;">Apple Leaf Disease Detection Based on SSD</font></h1>
                 <a href="https://github.com/liangliangtian/liangliang.github.com" class="smoothScroll btn btn-default">LEARN MORE</a>
             </div>
         </div>
@@ -111,12 +109,11 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <label>注册</label> 
+                <label>Register</label> 
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                     &times;
                 </button>
                 <h4 class="modal-title" id="myModalLabel">
-                 <!--这里显示错误信息-->
 
                 </h4>
             </div>
@@ -132,26 +129,26 @@
                 {%csrf_token%}
                 <div class="login-ic">
                     <i ></i>
-                    <input type="text" id="username" name="username" placeholder="请输入用户名" onFocus="this.value = '';" onBlur="check(this.value)"
-                    required oninvalid="setCustomValidity('用户名不能为空')" oninput="setCustomValidity('')"/>
+                    <input type="text" id="username" name="username" placeholder="Please input username:" onFocus="this.value = '';" onBlur="check(this.value)"
+                    required oninvalid="setCustomValidity('username cannot null')" oninput="setCustomValidity('')"/>
                 <div class="clear"> </div>
                 <div id="tip" style="float:center;"></div>
                 </div>
                   <div class="login-ic">
                     <i class="icon1"></i>
-                    <input type="email"  name="email" placeholder="请输入电子邮箱" onFocus="this.value = '';" onBlur="check1(this.value) "required oninvalid="setCustomValidity('请输入正确的邮箱格式')" oninput="setCustomValidity('')"/>
+                    <input type="email"  name="email" placeholder="please input email" onFocus="this.value = '';" onBlur="check1(this.value) "required oninvalid="setCustomValidity('email format is not correct')" oninput="setCustomValidity('')"/>
                 <div class="clear"> </div>
                 <div id="tip1" style="float:center;"></div>
                 </div>
                 <div class="login-ic">
                     <i class="icon"></i>
-                    <input type="password" id="password1" name="password1" placeholder="请输入密码" onFocus="this.value = '';" onBlur="if (this.value == '') " onchange="checkPassword()" required="required"/>
+                    <input type="password" id="password1" name="password1" placeholder="Please input password:" onFocus="this.value = '';" onBlur="if (this.value == '') " onchange="checkPassword()" required="required"/>
                     <div class="clear"> </div>
                     
                 </div>
                  <div class="login-ic">
                     <i class="icon"></i>
-                    <input type="password" id="password2" name="password2" placeholder="请再次确认" onFocus="this.value = '';" onkeyup="validate()" required="required"/>
+                    <input type="password" id="password2" name="password2" placeholder="Please confirm password:" onFocus="this.value = '';" onkeyup="validate()" required="required"/>
                     
                     <div class="clear"> </div>
                    <span id="tishi"></span>
@@ -163,8 +160,7 @@
                 </div>
                 </form>
             </div>
-                 <p class="copy"> 注册即表示您同意
-                         © 2018 苹果叶部病理图像目标检测</p>
+                 
             </div>  
 </div>    
 
@@ -179,12 +175,11 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-            <label>登录</label>
+            <label>Login</label>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                     &times;
                 </button>
                 <h4 class="modal-title" id="myModalLabel">
-                 <!--这里显示错误信息-->
 
                 </h4>
             </div>
@@ -201,31 +196,31 @@
                 {%csrf_token%}
                 <div class="login-ic">
                     <i ></i>
-                    <input type="text" id="username1" name="username" placeholder="请输入用户名" onFocus="this.value = '';" onBlur="check2(this.value)"
-                    required oninvalid="setCustomValidity('用户名不能为空')" oninput="setCustomValidity('')"/>
+                    <input type="text" id="username1" name="username" placeholder="Please input username:" onFocus="this.value = '';" onBlur="check2(this.value)"
+                    required oninvalid="setCustomValidity('username cannot null')" oninput="setCustomValidity('')"/>
                 <div class="clear"> </div>
                 <div id="tip2" style="float:center;"></div>
                 </div>
                 <div class="login-ic">
                     <i class="icon"></i>
-                    <input type="password"  id="password" name="password" placeholder="请输入密码"  onFocus="this.value = '';" required ="required" onBlur="checkLoginPassword(this.value) " onchange="" />
+                    <input type="password"  id="password" name="password" placeholder="Please input password:"  onFocus="this.value = '';" required ="required" onBlur="checkLoginPassword(this.value) " onchange="" />
                     
                     <div class="clear"> </div>
                     <div id="tipPass" style="display:none" > </div>
                 </div>
                 <div class="copy">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <input class="rem" type="checkbox" name="rem" id="rem-login-main">
-                <label for="rem-login-main" class="text-muted">记住我</label>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a class="copy1" class="text-muted" href="#" data-toggle="modal" data-target="#myModal2">忘记密码</a>
+                <label for="rem-login-main" class="text-muted">save password</label>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="copy1" class="text-muted" href="#" data-toggle="modal" data-target="#myModal2">forget password</a>
             </div>
                 <div class="log-bwn">
                     <input type="submit" value="Login" onclick="return submitform();" >
                 </div>
                 </form>
             </div>
-            <p class="copy"> 欢迎您加入我们<br> ©  2018 苹果叶部病理图像目标检测</p>
+            
 
         </div>  
 </div>    
@@ -238,12 +233,11 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <label>上传视频</label> 
+                <label>Upload file</label> 
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                     &times;
                 </button>
                 <h4 class="modal-title" id="myModalLabel">
-                 <!--这里显示错误信息-->
 
                 </h4>
             </div>
@@ -259,19 +253,18 @@
         {%csrf_token%}
         <div id="outdiv">
             <div class="indiv">
-                <span><font size="5">上传视频 :</font> </span><input type="file" name="inputfile" placeholder="请上传视频" />
+                <span><font size="5">Upload file:</font> </span><input type="file" name="inputfile" placeholder="Please input file" />
             </div> 
             <br>
             <br>
             <div class="log-bwn">
-                <input type="submit" value="提交">
+                <input type="submit" value="submit">
             </div>
         </div>
     </form>
           
             </div>
-                 <p class="copy">上传视频
-                         © 2018 苹果叶部病理图像目标检测</p>
+                 
 
             </div>  
 </div>    
@@ -287,12 +280,11 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <label>找回密码</label> 
+                <label>forget password</label> 
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                     &times;
                 </button>
                 <h4 class="modal-title" id="myModalLabel">
-                 <!--这里显示错误信息-->
 
                 </h4>
             </div>
@@ -309,17 +301,16 @@
                 {%csrf_token%}
                 <div class="login-ic">
                     <i ></i>
-                    <input type="text" id="username" required oninvalid="setCustomValidity('用户名不能为空')" oninput="setCustomValidity('')"  name="username" placeholder="请输入用户名" onFocus="this.value = '';" onBlur="check3(this.value)"/>
+                    <input type="text" id="username" required oninvalid="setCustomValidity('username cannot null')" oninput="setCustomValidity('')"  name="username" placeholder="Please input username:" onFocus="this.value = '';" onBlur="check3(this.value)"/>
                 <div class="clear"> </div>
                 <div id="tip3" style="float:center;"></div>
                 </div>           
                 <div class="log-bwn">
-                    <input type="submit"  value="下一步"  onclick="check(this.form)"/>
+                    <input type="submit"  value="submit"  onclick="check(this.form)"/>
                 </div>
                 </form>
             </div>
-                 <p class="copy"> 找回密码
-                         © 2018 苹果叶部病理图像目标检测</p>
+                 
 
             </div>  
 </div>    
@@ -332,6 +323,20 @@
     </div><!-- /.modal -->
 </div>
 
+
+<!-- copyright section -->
+<section id="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <h3>APPLE</h3>
+                <p>Copyright @ APPLE DETECTION 
+                
+                | Design: by team</p>
+            </div>
+        </div>
+    </div>
+</section>
 <script src="static/js/jquery.js"></script>
 <script src="static/js/bootstrap.min.js"></script>
 <script src="static/js/jquery.parallax.js"></script>
